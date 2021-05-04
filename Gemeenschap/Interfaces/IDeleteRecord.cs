@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gemeenschap.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,6 @@ namespace Gemeenschap.Interfaces
 {
     public interface IDeleteRecord
     {
-        Task DeleteRowAsync(int id);
+        void DeleteDocentRow(int id);
     }
 }

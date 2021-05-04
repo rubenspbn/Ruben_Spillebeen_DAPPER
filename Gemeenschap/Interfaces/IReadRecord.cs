@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gemeenschap.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace Gemeenschap.Interfaces
 {
-    public interface IReadRecord<T>
+    public interface IReadRecord
     {
-        Task<T> GetAsync(int id);
-        Task<IEnumerable<T>> GetAllAsync();
+        Docent GetDocent(int id);
+        IEnumerable<Docent> GetAllDocent();
+        IEnumerable<Campus> GetAllCampus();
     }
 }

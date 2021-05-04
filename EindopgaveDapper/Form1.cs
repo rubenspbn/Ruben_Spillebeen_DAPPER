@@ -19,38 +19,37 @@ namespace EindopgaveDapper
             InitializeComponent();
         }
 
-        private async void btnSubmit_Click(object sender, EventArgs e)
+        private void btnSubmit_Click(object sender, EventArgs e)
         {
-            IService<Docent> service = GemeenschapFactory.GetDocentService();
+            IService service = GemeenschapFactory.GetService();
             string voornaam = tbxVoornaam.Text;
             string familienaam = tbxFamilienaam.Text;
             decimal wedde = decimal.Parse(tbxWedde.Text);
             int campusNr = ((Campus)cmbCampus.SelectedItem).CampusNr;
             Docent docent = GemeenschapFactory.GetDocent(voornaam, familienaam, wedde, campusNr);
-            await service.InsertAsync(docent);
+            service.InsertDocent(docent);
             LoadDocenten();
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
             LoadCampussen();
-            LoadDocenten();
         }
 
-        private async void LoadCampussen()
+        private void LoadCampussen()
         {
-            IService<Campus> service = GemeenschapFactory.GetCampusService();
+            IService service = GemeenschapFactory.GetService();
             cmbCampus.DisplayMember = "Naam";
             cmbCampus.ValueMember = "CampusNr";
             cmbCampus.DataSource = null;
-            cmbCampus.DataSource = await service.GetAllAsync();
+            cmbCampus.DataSource = service.GetAllCampus();
         }
 
-        private async void LoadDocenten()
+        private void LoadDocenten()
         {
-            IService<Docent> service = GemeenschapFactory.GetDocentService();
+            IService service = GemeenschapFactory.GetService();
             lbxDocenten.DataSource = null;
-            lbxDocenten.DataSource = (await service.GetAllAsync()).Where(x => x.CampusNr == (int)cmbCampus.SelectedValue).ToList();
+            lbxDocenten.DataSource = (service.GetAllDocent()).Where(x => x.CampusNr == (int)cmbCampus.SelectedValue).ToList();
         }
 
         private void cmbCampus_SelectedIndexChanged(object sender, EventArgs e)
@@ -59,20 +58,22 @@ namespace EindopgaveDapper
             LoadDocenten();
         }
 
-        private async void lbxDocenten_SelectedIndexChanged(object sender, EventArgs e)
+        private void lbxDocenten_SelectedIndexChanged(object sender, EventArgs e)
         {
-            IService<Docent> service = GemeenschapFactory.GetDocentService();
-            Docent docent = await service.GetAsync(((Docent)lbxDocenten.SelectedItem).DocentNr);
-            lblDetailVoornaam.Text = docent.Voornaam;
-            lblDetailFamilienaam.Text = docent.Familienaam;
-            lblDetailWedde.Text = docent.Wedde.ToString();
+            if (lbxDocenten.SelectedIndex >-1)
+            {
+                Docent docent = (Docent)lbxDocenten.SelectedItem;
+                lblDetailVoornaam.Text = docent.Voornaam;
+                lblDetailFamilienaam.Text = docent.Familienaam;
+                lblDetailWedde.Text = docent.Wedde.ToString();
+            }
         }
 
-        private async void btnDelete_Click(object sender, EventArgs e)
+        private void btnDelete_Click(object sender, EventArgs e)
         {
-            IService<Docent> service = GemeenschapFactory.GetDocentService();
-            int nr = (await service.GetAsync(((Docent)lbxDocenten.SelectedItem).DocentNr)).DocentNr;
-            await service.DeleteRowAsync(nr);
+            IService service = GemeenschapFactory.GetService();
+            service.DeleteDocentRow(((Docent)lbxDocenten.SelectedItem).DocentNr);
+            LoadDocenten();
         }
     }
 }

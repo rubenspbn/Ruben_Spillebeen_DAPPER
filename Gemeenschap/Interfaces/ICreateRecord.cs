@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gemeenschap.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Gemeenschap.Interfaces
 {
-    public interface ICreateRecord<T>
+    public interface ICreateRecord
     {
-        Task InsertAsync(T obj);
+        void InsertDocent(Docent obj);
     }
 }

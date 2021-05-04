@@ -13,13 +13,9 @@ namespace Gemeenschap.Models
         {
             return new OpleidingDbManager();
         }
-        public static IService<Docent> GetDocentService()
+        public static IService GetService()
         {
-            return new OpleidingenService<Docent>("Docenten");
-        }
-        public static IService<Campus> GetCampusService()
-        {
-            return new OpleidingenService<Campus>("Campussen");
+            return new OpleidingenService();
         }
         public static Docent GetDocent()
         {

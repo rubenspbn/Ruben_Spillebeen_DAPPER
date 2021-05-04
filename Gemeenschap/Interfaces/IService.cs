@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Gemeenschap.Interfaces
 {
-    public interface IService<T> : ICreateRecord<T>, IDeleteRecord, IUpdateRecord<T>, IReadRecord<T>
+    public interface IService : ICreateRecord, IDeleteRecord, IUpdateRecord, IReadRecord
     {
     }
 }
