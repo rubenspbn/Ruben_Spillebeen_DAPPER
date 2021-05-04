@@ -49,7 +49,7 @@ namespace EindopgaveDapper
         {
             IService service = GemeenschapFactory.GetService();
             lbxDocenten.DataSource = null;
-            lbxDocenten.DataSource = (service.GetAllDocent()).Where(x => x.CampusNr == (int)cmbCampus.SelectedValue).ToList();
+            lbxDocenten.DataSource = service.GetAllDocent().Where(x => x.CampusNr == (int)cmbCampus.SelectedValue).ToList();
         }
 
         private void cmbCampus_SelectedIndexChanged(object sender, EventArgs e)
@@ -68,7 +68,12 @@ namespace EindopgaveDapper
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             IService service = GemeenschapFactory.GetService();
-            Docent docent = GemeenschapFactory.GetDocent(tbxDetailVoornaam.Text, tbxDetailFamilienaam.Text, decimal.Parse(tbxDetailWedde.Text), (int)cmbCampus.SelectedValue);
+            int docentNr = ((Docent)lbxDocenten.SelectedItem).DocentNr;
+            string voornaam = tbxDetailVoornaam.Text;
+            string familienaam = tbxDetailFamilienaam.Text;
+            decimal wedde = decimal.Parse(tbxDetailWedde.Text);
+            int campusNr = ((Campus)cmbCampus.SelectedItem).CampusNr;
+            Docent docent = GemeenschapFactory.GetDocent(docentNr, voornaam, familienaam, wedde, campusNr);
             service.UpdateDocent(docent);
             LoadDocenten();
         }

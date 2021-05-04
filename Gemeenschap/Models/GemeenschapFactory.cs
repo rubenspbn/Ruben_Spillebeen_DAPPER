@@ -21,6 +21,17 @@ namespace Gemeenschap.Models
         {
             return new Docent();
         }
+        public static Docent GetDocent(int docentNr, string voornaam, string familienaam, decimal wedde, int campusNr)
+        {
+            return new Docent()
+            {
+                DocentNr = docentNr,
+                Voornaam = voornaam,
+                Familienaam = familienaam,
+                Wedde = wedde,
+                CampusNr = campusNr
+            };
+        }
         public static Docent GetDocent(string voornaam, string familienaam, decimal wedde, int campusNr)
         {
             return new Docent()
