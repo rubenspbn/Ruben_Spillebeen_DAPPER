@@ -49,6 +49,7 @@
     <Compile Include="Interfaces\ICreateRecord.cs" />
     <Compile Include="Interfaces\IDeleteRecord.cs" />
     <Compile Include="Interfaces\IReadRecord.cs" />
+    <Compile Include="Interfaces\IService.cs" />
     <Compile Include="Interfaces\IUpdateRecord.cs" />
     <Compile Include="Models\Campus.cs" />
     <Compile Include="Models\Docent.cs" />

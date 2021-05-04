@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace Gemeenschap.Models
 {
-    public class OpleidingenService<T> : ICreateRecord<T>, IDeleteRecord, IUpdateRecord<T>, IReadRecord<T>
+    public class OpleidingenService<T>:IService<T>
     {
         private readonly ICreateConnection DbManager;
         private readonly string _tableName;

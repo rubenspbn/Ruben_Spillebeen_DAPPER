@@ -13,5 +13,9 @@ namespace Gemeenschap.Models
         public string Familienaam { get; set; }
         public decimal Wedde { get; set; }
         public int CampusNr { get; set; }
+        public override string ToString()
+        {
+            return $"{Voornaam} {Familienaam}";
+        }
     }
 }

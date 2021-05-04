@@ -79,5 +79,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Gemeenschap\Gemeenschap.csproj">
+      <Project>{3C0EF59B-E03B-48E6-AA43-8E1DACE85637}</Project>
+      <Name>Gemeenschap</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
