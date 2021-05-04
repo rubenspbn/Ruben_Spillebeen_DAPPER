@@ -47,6 +47,10 @@ namespace EindopgaveDapper
             this.lblDetailVoornaam = new System.Windows.Forms.Label();
             this.btnDelete = new System.Windows.Forms.Button();
             this.lbxDocenten = new System.Windows.Forms.ListBox();
+            this.tbxDetailWedde = new System.Windows.Forms.TextBox();
+            this.tbxDetailFamilienaam = new System.Windows.Forms.TextBox();
+            this.tbxDetailVoornaam = new System.Windows.Forms.TextBox();
+            this.btnUpdate = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // cmbCampus
@@ -216,13 +220,48 @@ namespace EindopgaveDapper
             this.lbxDocenten.Name = "lbxDocenten";
             this.lbxDocenten.Size = new System.Drawing.Size(452, 147);
             this.lbxDocenten.TabIndex = 4;
-            this.lbxDocenten.SelectedIndexChanged += new System.EventHandler(this.lbxDocenten_SelectedIndexChanged);
+            this.lbxDocenten.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.lbxDocenten_MouseDoubleClick);
+            // 
+            // tbxDetailWedde
+            // 
+            this.tbxDetailWedde.Location = new System.Drawing.Point(614, 234);
+            this.tbxDetailWedde.Name = "tbxDetailWedde";
+            this.tbxDetailWedde.Size = new System.Drawing.Size(217, 20);
+            this.tbxDetailWedde.TabIndex = 21;
+            // 
+            // tbxDetailFamilienaam
+            // 
+            this.tbxDetailFamilienaam.Location = new System.Drawing.Point(614, 191);
+            this.tbxDetailFamilienaam.Name = "tbxDetailFamilienaam";
+            this.tbxDetailFamilienaam.Size = new System.Drawing.Size(217, 20);
+            this.tbxDetailFamilienaam.TabIndex = 20;
+            // 
+            // tbxDetailVoornaam
+            // 
+            this.tbxDetailVoornaam.Location = new System.Drawing.Point(614, 144);
+            this.tbxDetailVoornaam.Name = "tbxDetailVoornaam";
+            this.tbxDetailVoornaam.Size = new System.Drawing.Size(217, 20);
+            this.tbxDetailVoornaam.TabIndex = 19;
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(509, 304);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(360, 23);
+            this.btnUpdate.TabIndex = 22;
+            this.btnUpdate.Text = "Updaten";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(933, 578);
+            this.Controls.Add(this.btnUpdate);
+            this.Controls.Add(this.tbxDetailWedde);
+            this.Controls.Add(this.tbxDetailFamilienaam);
+            this.Controls.Add(this.tbxDetailVoornaam);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.lblDetailWedde);
             this.Controls.Add(this.lblDetailFamilienaam);
@@ -269,6 +308,10 @@ namespace EindopgaveDapper
         private System.Windows.Forms.Label lblDetailVoornaam;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.ListBox lbxDocenten;
+        private System.Windows.Forms.TextBox tbxDetailWedde;
+        private System.Windows.Forms.TextBox tbxDetailFamilienaam;
+        private System.Windows.Forms.TextBox tbxDetailVoornaam;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
 

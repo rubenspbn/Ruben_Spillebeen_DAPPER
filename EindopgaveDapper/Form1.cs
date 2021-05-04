@@ -58,22 +58,32 @@ namespace EindopgaveDapper
             LoadDocenten();
         }
 
-        private void lbxDocenten_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (lbxDocenten.SelectedIndex >-1)
-            {
-                Docent docent = (Docent)lbxDocenten.SelectedItem;
-                lblDetailVoornaam.Text = docent.Voornaam;
-                lblDetailFamilienaam.Text = docent.Familienaam;
-                lblDetailWedde.Text = docent.Wedde.ToString();
-            }
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             IService service = GemeenschapFactory.GetService();
             service.DeleteDocentRow(((Docent)lbxDocenten.SelectedItem).DocentNr);
             LoadDocenten();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            IService service = GemeenschapFactory.GetService();
+            Docent docent = GemeenschapFactory.GetDocent(tbxDetailVoornaam.Text, tbxDetailFamilienaam.Text, decimal.Parse(tbxDetailWedde.Text), (int)cmbCampus.SelectedValue);
+            service.UpdateDocent(docent);
+            LoadDocenten();
+        }
+
+        private void lbxDocenten_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (lbxDocenten.SelectedIndex > -1)
+            {
+                Docent docent = (Docent)lbxDocenten.SelectedItem;
+                tbxDetailVoornaam.Text = docent.Voornaam;
+                tbxDetailFamilienaam.Text = docent.Familienaam;
+                tbxDetailWedde.Text = docent.Wedde.ToString();
+                btnDelete.Text = $"{docent.ToString()} verwijderen";
+                btnUpdate.Text = $"{docent.ToString()} updaten";
+            }
         }
     }
 }

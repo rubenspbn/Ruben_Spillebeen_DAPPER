@@ -65,7 +65,7 @@ namespace Gemeenschap.Models
 
         public void UpdateDocent(Docent obj)
         {
-            string sql = "UPDATE [Docenten] SET Voornaam = @Voornaam, Familienaam=@Familienaam, Wedde=@Wedde, CampusNr=@CampusNr";
+            string sql = "UPDATE [Docenten] SET Voornaam = @Voornaam, Familienaam = @Familienaam, Wedde = @Wedde, CampusNr = @CampusNr WHERE DocentNr = @DocentNr";
             using (var con = DbManager.GetConnection())
             {
                 con.Query(sql, obj);
